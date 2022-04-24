@@ -43,7 +43,8 @@ def candies_cmd(update: Update, context: CallbackContext):
     keyboard = [
         [InlineKeyboardButton("С ботом", callback_data='1'),
          InlineKeyboardButton("С другим игроком", callback_data='2')]]
-    context.bot.send_message(update.effective_chat.id, "Начинаем игру!\nВыбери режим игры", reply_markup=InlineKeyboardMarkup(keyboard))
+    context.bot.send_message(update.effective_chat.id, "Начинаем игру!\nВыбери режим игры",
+                             reply_markup=InlineKeyboardMarkup(keyboard))
 
 
 def vs_comp(update: Update, context: CallbackContext):

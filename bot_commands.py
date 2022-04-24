@@ -2,11 +2,15 @@ from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, CommandHandler, CallbackContext
 import datetime as dt
 from greetings import greeting_phrases as greetings
+from emoji import emojize
 
 
 def start_cmd(update: Update, context: CallbackContext):
     txt = (greetings(update.effective_user.first_name) +
-            '\nИспользуйте комманду /menu если хотите узнать что бот может на текущий момент')
+            '\nИспользуйте комманду /menu если хотите узнать, что бот может на текущий момент, либо '
+            'воспользуётесь подсказками при наборе "/" в строке для отправки сообщения или, на конец, '
+            'просто воспользуйтесь кнопкой "Меню" - слева, в вышеупомянутой строке '
+            + emojize(':beaming_face_with_smiling_eyes:'))
     update.message.reply_text(txt)
 
 
@@ -19,7 +23,7 @@ def menu_cmd(update: Update, context: CallbackContext):
     update.message.reply_text(f'/start - увидеть приветствие бота\n'
                               f'/time - узнать текущую дату и время\n'
                               f'/candies - сыграть в конфетки (забери последнюю)\n'
-                              f'/menu - отобразить данное меню с описанием комманд')
+                              f'/menu - отобразить данное меню с описанием команд')
 
 
 # def sum_cmd(update: Update, context: CallbackContext):
